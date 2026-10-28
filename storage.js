@@ -9,7 +9,7 @@
             id: column.dataset.id,
             cards: Array.from(column.querySelectorAll('.kanban-card')).map(card => ({
                 id: card.dataset.cardId || `card-${Math.random().toString(16).slice(2)}`,
-                title: card.querySelector('.card-title')?.textContent.trim() || 'New task',
+                title: card.querySelector('.card-title')?.textContent.trim() || 'Nova tarefa',
                 priority: getPriority(card),
                 comments: card._comments || []
             }))
@@ -31,7 +31,7 @@
         try {
             localStorage.setItem(BOARD_KEY, JSON.stringify(snapshot()));
         } catch (error) {
-            console.warn('Could not save the Kanban board to localStorage.', error);
+            console.warn('Não foi possível salvar o Kanban no localStorage.', error);
         }
     }
 
@@ -79,9 +79,9 @@
         badge.className = `badge ${priority}`;
 
         const priorityLabels = {
-            low: 'low priority',
-            medium: 'medium priority',
-            high: 'high priority'
+            low: 'baixa prioridade',
+            medium: 'média prioridade',
+            high: 'alta prioridade'
         };
 
         const label = document.createElement('span');
@@ -90,7 +90,7 @@
 
         const title = document.createElement('p');
         title.className = 'card-title';
-        title.textContent = item.title || 'New task';
+        title.textContent = item.title || 'Nova tarefa';
 
         const info = document.createElement('div');
         info.className = 'card-infos';
@@ -101,7 +101,7 @@
         const commentButton = document.createElement('button');
         commentButton.type = 'button';
         commentButton.className = 'comment-toggle';
-        commentButton.setAttribute('aria-label', 'View comments');
+        commentButton.setAttribute('aria-label', 'Ver comentários');
         commentButton.innerHTML = `<i class="fa-regular fa-comment" aria-hidden="true"></i> ${card._comments.length}`;
 
         icons.append(commentButton);

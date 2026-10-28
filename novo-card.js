@@ -12,13 +12,13 @@
         badge.className = `badge ${priority}`;
 
         const priorityNames = {
-            low: 'low',
-            medium: 'medium',
-            high: 'high'
+            low: 'baixa',
+            medium: 'média',
+            high: 'alta'
         };
 
         const badgeText = document.createElement('span');
-        badgeText.textContent = `${priorityNames[priority]} priority`;
+        badgeText.textContent = `${priorityNames[priority]} prioridade`;
         badge.append(badgeText);
 
         const titleElement = document.createElement('p');
@@ -34,7 +34,7 @@
         const commentButton = document.createElement('button');
         commentButton.type = 'button';
         commentButton.className = 'comment-toggle';
-        commentButton.setAttribute('aria-label', 'View comments');
+        commentButton.setAttribute('aria-label', 'Ver comentários');
         commentButton.innerHTML = '<i class="fa-regular fa-comment" aria-hidden="true"></i> 0';
 
         icons.append(commentButton);
@@ -48,24 +48,24 @@
     commentsDialog.className = 'comments-dialog';
     commentsDialog.innerHTML = `
         <form class="comments-form">
-            <h2 class="comments-title">Comments</h2>
+            <h2 class="comments-title">Comentários</h2>
             <ul class="comments-list"></ul>
-            <p class="comments-empty">There are no comments on this card yet.</p>
+            <p class="comments-empty">Ainda não há comentários neste cartão.</p>
 
             <label>
-                New comment
+                Novo comentário
                 <textarea
                     name="comment"
                     rows="3"
                     maxlength="500"
                     required
-                    placeholder="Write a comment"
+                    placeholder="Escreva um comentário"
                 ></textarea>
             </label>
 
             <div class="new-card-actions">
-                <button type="button" class="close-comments">Close</button>
-                <button type="submit">Add comment</button>
+                <button type="button" class="close-comments">Fechar</button>
+                <button type="submit">Adicionar comentário</button>
             </div>
         </form>`;
     document.body.append(commentsDialog);
@@ -84,7 +84,7 @@
 
         if (button) {
             button.innerHTML = `<i class="fa-regular fa-comment" aria-hidden="true"></i> ${comments.length}`;
-            button.setAttribute('aria-label', `View ${comments.length} comments`);
+            button.setAttribute('aria-label', `Ver ${comments.length} comentários`);
         }
 
         commentsList.replaceChildren();
@@ -115,7 +115,7 @@
 
         button?.addEventListener('click', () => {
             activeCard = card;
-            commentsTitle.textContent = `Comments: ${card.querySelector('.card-title')?.textContent || 'Card'}`;
+            commentsTitle.textContent = `Comentários: ${card.querySelector('.card-title')?.textContent || 'Cartão'}`;
             renderComments(card);
             commentsDialog.showModal();
         });
@@ -151,7 +151,7 @@
     const newCardDialog = document.createElement('dialog');
     newCardDialog.innerHTML = `
         <form method="dialog" class="new-card-form">
-            <h2>New card</h2>
+            <h2>Novo cartão</h2>
 
             <label>
                 Tarefa
@@ -160,22 +160,22 @@
                     type="text"
                     required
                     maxlength="120"
-                    placeholder="E.g., Review document"
+                    placeholder="Ex.: Revisar documento"
                 >
             </label>
 
             <label>
                 Prioridade
                 <select name="priority">
-                    <option value="low">Low</option>
-                    <option value="medium">Medium</option>
-                    <option value="high">High</option>
+                    <option value="low">Baixa</option>
+                    <option value="medium">Média</option>
+                    <option value="high">Alta</option>
                 </select>
             </label>
 
             <div class="new-card-actions">
-                <button type="button" class="cancel-new-card">Cancel</button>
-                <button type="submit">Create card</button>
+                <button type="button" class="cancel-new-card">Cancelar</button>
+                <button type="submit">Criar cartão</button>
             </div>
         </form>`;
     document.body.append(newCardDialog);
